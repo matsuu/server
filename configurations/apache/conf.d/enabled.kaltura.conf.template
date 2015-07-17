@@ -51,7 +51,7 @@ Alias /sf "/usr/share/pear/data/symfony/web/sf/"
 	Header unset ETag
 	FileETag None
 	# remove Vary header except COMPRESS filetypes
-	<FilesMatch "\.(flv|ico|pdf|avi|mov|ppt|doc|mp3|wmv|wav|mp4)$">
+	<FilesMatch "\.(3gp|adj|avi|d2h|dcp|dll|doc|docx|dot|fla|flv|gif|gz|ico|jpg|kinf|md|mov|mp3|mp4|mpeg|mso|pdf|png|ppt|smp|swc|swf|swz|thmx|tmp|ts|wav|webm|wmv|zip)$">
 		SetEnv force-no-vary
 	</FilesMatch>
 	
@@ -186,7 +186,9 @@ Alias /content/uiconf "@WEB_DIR@/content/uiconf"
 <Directory "@WEB_DIR@/content/uiconf">
         AddHandler cgi-script .php .pl .py .jsp .asp .htm .shtml .sh .cgi
         Options -ExecCGI
-        SetEnv force-no-vary
+        <FilesMatch "\.(3gp|adj|avi|d2h|dcp|dll|doc|docx|dot|fla|flv|gif|gz|ico|jpg|kinf|md|mov|mp3|mp4|mpeg|mso|pdf|png|ppt|smp|swc|swf|swz|thmx|tmp|ts|wav|webm|wmv|zip)$">
+                SetEnv force-no-vary
+        </FilesMatch>
 
         ExpiresActive On
         ExpiresDefault "access plus 3 month"
@@ -202,7 +204,9 @@ Alias /content "@WEB_DIR@/content"
 <Directory "@WEB_DIR@/content">
 	#AddHandler cgi-script .php .pl .py .jsp .asp .htm .shtml .sh .cgi
 	#Options -ExecCGI
-	SetEnv force-no-vary
+	<FilesMatch "\.(3gp|adj|avi|d2h|dcp|dll|doc|docx|dot|fla|flv|gif|gz|ico|jpg|kinf|md|mov|mp3|mp4|mpeg|mso|pdf|png|ppt|smp|swc|swf|swz|thmx|tmp|ts|wav|webm|wmv|zip)$">
+		SetEnv force-no-vary
+	</FilesMatch>
 
 	ExpiresActive On
 	ExpiresDefault "access plus 3 month"
@@ -221,7 +225,9 @@ Alias /flash "@WEB_DIR@/flash"
 <Directory "@WEB_DIR@/flash">
 	AddHandler cgi-script .php .pl .py .jsp .asp .htm .shtml .sh .cgi
 	Options -ExecCGI
-	SetEnv force-no-vary
+	<FilesMatch "\.(3gp|adj|avi|d2h|dcp|dll|doc|docx|dot|fla|flv|gif|gz|ico|jpg|kinf|md|mov|mp3|mp4|mpeg|mso|pdf|png|ppt|smp|swc|swf|swz|thmx|tmp|ts|wav|webm|wmv|zip)$">
+		SetEnv force-no-vary
+	</FilesMatch>
 
 	ExpiresActive On
 	ExpiresDefault "access plus 3 month"
