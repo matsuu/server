@@ -42,14 +42,15 @@ FilterChain COMPRESS
 
 Alias /sf "/usr/share/pear/data/symfony/web/sf/"
 <Directory "@APP_DIR@/alpha/web">
-	# set caching for static files such as crossdomain.xml
-	<FilesMatch "\.(xml|flv|ico|pdf|avi|mov|ppt|doc|mp3|wmv|wav|mp4)$">
-		ExpiresActive On
-		ExpiresDefault "access plus 3 month"
-		Header append Cache-Control "public"
+	# set caching for static files
+	ExpiresActive On
+	ExpiresDefault "access plus 3 month"
+	Header append Cache-Control "public"
+	Header unset ETag
+	FileETag None
+	# remove Vary header except COMPRESS filetypes
+	<FilesMatch "\.(flv|ico|pdf|avi|mov|ppt|doc|mp3|wmv|wav|mp4)$">
 		SetEnv force-no-vary
-		Header unset ETag
-		FileETag None
 	</FilesMatch>
 	
 	DirectoryIndex index.php
