@@ -10,6 +10,7 @@ FilterDeclare COMPRESS
 
 <IfVersion >= 2.4>
 FilterProvider COMPRESS DEFLATE "%{CONTENT_TYPE} in { 'text' }"
+FilterProvider COMPRESS DEFLATE "%{CONTENT_TYPE} == 'application/json'"
 FilterProvider COMPRESS DEFLATE "%{CONTENT_TYPE} == 'application/x-javascript'"
 FilterProvider COMPRESS DEFLATE "%{CONTENT_TYPE} =~ m#application/.*xml#"
 FilterProvider COMPRESS DEFLATE "%{CONTENT_TYPE} == 'image/svg+xml'"
@@ -17,6 +18,7 @@ FilterProvider COMPRESS DEFLATE "%{CONTENT_TYPE} == 'image/svg+xml'"
 
 <IfVersion < 2.4>
 FilterProvider COMPRESS DEFLATE resp=Content-Type $text
+FilterProvider COMPRESS DEFLATE resp=Content-Type application/json
 FilterProvider COMPRESS DEFLATE resp=Content-Type application/x-javascript
 FilterProvider COMPRESS DEFLATE resp=Content-Type /application\x2F.*xml/
 FilterProvider COMPRESS DEFLATE resp=Content-Type image/svg+xml
